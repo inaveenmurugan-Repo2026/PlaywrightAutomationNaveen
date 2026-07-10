@@ -1,0 +1,30 @@
+[
+    {
+        "username": "abc2611@gmail.com",
+        "password": "Test@123",
+        "dashboardTitle": "Let's Shop",
+        "productName": "iphone 13 pro",
+        "month": "11",
+        "year": "29",
+        "cvv": "234313",
+        "cardName": "Naveen",
+        "couponId": "rahulshettyacademy",
+        "mailID": "abc2611@gmail.com",
+        "countryName": "France",
+        "orderMessage": "Thankyou for the order."
+    },
+    {
+        "username": "naveen1126@gmail.com",
+        "password": "Naveen@1234",
+        "dashboardTitle": "Let's Shop",
+        "productName": "ADIDAS ORIGINAL",
+        "month": "12",
+        "year": "22",
+        "cvv": "2345678",
+        "cardName": "NaveenMurugan",
+        "couponId": "rahulshettyacademy",
+        "mailID": "naveen1126@gmail.com",
+        "countryName": "Canada",
+        "orderMessage": "Thankyou for the order."
+    }
+]

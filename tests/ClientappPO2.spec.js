@@ -43,7 +43,7 @@ for (const data of dataset) {
 }
 
 // this is alternate to Json file reading- we execute it from reading Jscript object
-customtest(`Client App using Fixture`, async ({ page, testDataForLogin }) => {
+customtest(`webTests Client App using Fixture`, async ({ page, testDataForLogin }) => {
     const POmanager = new POManager(page);
     const loginpage = POmanager.getLoginPage();
     const dashboardPage = POmanager.getDashboardPage();
@@ -58,4 +58,6 @@ customtest(`Client App using Fixture`, async ({ page, testDataForLogin }) => {
     await dashboardPage.searchProductsAddtoCart(testDataForLogin.productName);
     await dashboardPage.navigateToCartPage();
     await dashboardPage.verifyTitle(testDataForLogin.dashboardTitle);
+
+    console.log("Final Verification Using Jenkins PCM...");
 });

@@ -192,6 +192,7 @@ test('@WebsmokeTest TestCase_02_End2End', async ({ page }) => {
     console.log("PCM checking...Jenkins...");
     console.log("PCM checking...every minute...Jenkins...");
     console.log("PCM checking...every minute...Jenkins3...");
+    console.log("PCM checking...every minute...final verification...");
     // Poll SCM Test 2
 });
 

@@ -3,10 +3,10 @@ const { test, expect } = require('@playwright/test');
 const { customtest } = require('../utils/testbase');
 const { POManager } = require('../pageobjects/POManager');
 const dataset = JSON.parse(JSON.stringify(require('../testdata/testdata.json')));
-
 //to run parallel in same test...From same file by extending test option behaviour...
 // test.describe.configure({ mode: 'parallel' }); //Execution is independent. each runs seperately
-test.describe.configure({ mode: 'serial' }); // (from top to bottom)it interconects the next next testcases (if previous test was interconnected to next case use this) 
+
+test.describe.configure({ mode: 'serial' }); // (from top to bottom)it interconects the next next testcases (if previous test was interconnected to next case use this)
 // (for ex: Login->createOrder->DeleteOrder)if one fails it will never move to next case it skips .
 for (const data of dataset) {
 

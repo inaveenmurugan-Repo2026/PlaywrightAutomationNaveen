@@ -189,5 +189,6 @@ test('@WebsmokeTest TestCase_02_End2End', async ({ page }) => {
     await page.pause();
 
 
-    console.log("PCM checking...Jenkins...");
+    console.log("PCM checking...Jenkins Every two minute...");
+    console.log("PCM checking...Jenkins Every minute...");
 });

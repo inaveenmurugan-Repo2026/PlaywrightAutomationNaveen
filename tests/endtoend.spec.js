@@ -187,4 +187,7 @@ test('@WebsmokeTest TestCase_02_End2End', async ({ page }) => {
     //     .toContainText("abc2611@gmail.com");
 
     await page.pause();
+
+
+    console.log("PCM checking...Jenkins...");
 });

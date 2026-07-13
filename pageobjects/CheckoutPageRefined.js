@@ -54,18 +54,6 @@ class checkoutPageRefined {
         await this.countryDropdownBtn.first().waitFor({ state: "visible" });
         const optionsCount = await this.countryDropdownBtn.count();
 
-        // for (let i = 0; i < optionsCount; i++) {
-        //     const text = await this.countryDropdownBtn.nth(i).textContent();
-        //     console.log("Expected:", JSON.stringify(country.trim()));
-        //     console.log("Actual:", JSON.stringify(text?.trim()));
-        //     console.log("Equal:", text?.trim() === country.trim());
-        //     if (text?.trim() === country.trim()) {
-        //         console.log("Country found");
-        //         await this.countryDropdownBtn.nth(i).click();
-        //         break;
-        //     }
-        // }
-
         for (let i = 0; i < optionsCount; i++) {
             const text = await this.countryDropdownBtn.nth(i).textContent();
 

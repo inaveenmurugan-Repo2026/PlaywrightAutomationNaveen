@@ -52,12 +52,9 @@ customtest(`@EndToEndTest webTests Client App using Fixture`, async ({ page, tes
     await expect(loginpage.loginBtn).toBeVisible();
     await loginpage.validLogin(testDataForLogin.username, testDataForLogin.password);
 
-
-
-
     await dashboardPage.searchProductsAddtoCart(testDataForLogin.productName);
     await dashboardPage.navigateToCartPage();
     await dashboardPage.verifyTitle(testDataForLogin.dashboardTitle);
 
-    console.log("Final Verification Using Jenkins PCM...");
+    console.log("CI Verification, Commit->Pipeline Runs->Allure report->Email Notification");
 });

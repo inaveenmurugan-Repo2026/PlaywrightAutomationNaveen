@@ -7,6 +7,7 @@
     "regression": "npx playwright test",
     "webTests" : "npx playwright test --grep @WebsmokeTest",
     "APITests" : "npx playwright test --grep @APIsmoke",
+    "FrameworkTest" : "npx playwright test --grep @EndToEndTest",
     "safariNewConfig":"npx playwright test --config playwright.config1.js --project=safari"
   },
   "keywords": [],

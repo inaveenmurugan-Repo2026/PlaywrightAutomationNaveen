@@ -10,7 +10,7 @@ test.describe.configure({ mode: 'serial' }); // (from top to bottom)it intercone
 // (for ex: Login->createOrder->DeleteOrder)if one fails it will never move to next case it skips .
 for (const data of dataset) {
 
-    test(`Client App E2e- ${data.productName}`, async ({ page }) => {
+    test(`@EndToEndTest Client App E2e- ${data.productName}`, async ({ page }) => {
         const POmanager = new POManager(page);
         const loginpage = POmanager.getLoginPage();
         const dashboardPage = POmanager.getDashboardPage();
@@ -43,7 +43,7 @@ for (const data of dataset) {
 }
 
 // this is alternate to Json file reading- we execute it from reading Jscript object
-customtest(`webTests Client App using Fixture`, async ({ page, testDataForLogin }) => {
+customtest(`@EndToEndTest webTests Client App using Fixture`, async ({ page, testDataForLogin }) => {
     const POmanager = new POManager(page);
     const loginpage = POmanager.getLoginPage();
     const dashboardPage = POmanager.getDashboardPage();

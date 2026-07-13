@@ -20,8 +20,7 @@ class ApiUtils {
 
 
     };
-    async createOrder(createOrderRequestPayload) { // if we are using async we have to await on actions
-
+    async createOrder(createOrderRequestPayload) { 
         let response = {};
 
         response.token = await this.getToken();

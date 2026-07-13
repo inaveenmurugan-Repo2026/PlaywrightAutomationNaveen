@@ -13,16 +13,17 @@ const config = ({
     timeout: 6000 // this is for assertion validations expect timeout
   },
 
-reporter: [
-  ['html'],
-  ['allure-playwright']
-], 
+  reporter: [
+    ['html'],
+    ['allure-playwright']
+  ],
 
   use: {  // browser initalization should be in use object
     browserName: 'chromium',
     headless: true,
+    video: 'retain-on-failure',
     screenshot: 'on',
-    trace: 'on', //on or off ('retain-on-failure') - on means it will bring all the trace(passed screenshot of the execution) off means completely off
+    trace: 'retain-on-failure', //on or off ('retain-on-failure') - on means it will bring all the trace(passed screenshot of the execution) off means completely off
     //off- means it will capture only on failure...(on-- means even test is passed it will show screenshot)
   },
 

@@ -5,8 +5,8 @@ const { test, expect } = require('@playwright/test');
 // const { checkoutPageRefined } = require('../tests/pageobjects/CheckoutPageRefined');
 
 // now the above created Page objects are clubbed into single file,so that we can call them once via creating object.
-const { POManager } = require('../pageobjects/POManager');
-const dataset = JSON.parse(JSON.stringify(require('../testdata/testdata.json')));
+const { POManager } = require('../../pageobjects/POManager');
+const dataset = JSON.parse(JSON.stringify(require('../../testdata/testdata.json')));
 //since it already converts as jscript obj we dont need to parse.
 //Json to String -> Js object(parse)
 

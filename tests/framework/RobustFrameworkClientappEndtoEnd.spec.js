@@ -1,8 +1,8 @@
 
 const { test, expect } = require('@playwright/test');
-const { customtest } = require('../utils/testbase');
-const { POManager } = require('../pageobjects/POManager');
-const dataset = JSON.parse(JSON.stringify(require('../testdata/testdata.json')));
+const { customtest } = require('../../utils/testbase');
+const { POManager } = require('../../pageobjects/POManager');
+const dataset = JSON.parse(JSON.stringify(require('../../testdata/testdata.json')));
 //to run parallel in same test...From same file by extending test option behaviour...
 // test.describe.configure({ mode: 'parallel' }); //Execution is independent. each runs seperately
 

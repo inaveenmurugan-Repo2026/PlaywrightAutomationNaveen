@@ -43,7 +43,7 @@ for (const data of dataset) {
 }
 
 // this is alternate to Json file reading- we execute it from reading Jscript object
-customtest(`@EndToEndTest webTests Client App using Fixture`, async ({ page, testDataForLogin }) => {
+customtest(`@EndToEndTest Client App using Fixture`, async ({ page, testDataForLogin }) => {
     const POmanager = new POManager(page);
     const loginpage = POmanager.getLoginPage();
     const dashboardPage = POmanager.getDashboardPage();

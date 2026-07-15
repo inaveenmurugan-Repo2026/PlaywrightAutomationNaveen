@@ -121,5 +121,5 @@ test('@WebsmokeTest upload and download excel validation', async ({ page }) => {
         .toContainText(updatePrice);
 
 
-
+    console.log("Tagged to webTests smoke");
 });

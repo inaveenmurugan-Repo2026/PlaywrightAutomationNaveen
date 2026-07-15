@@ -13,11 +13,9 @@ Purpose:
 */
 
 pipeline {
-
     agent any
 
     stages {
-
         stage('Checkout Code') {
             steps {
                 // Clone latest source code from GitHub
@@ -30,8 +28,8 @@ pipeline {
             steps {
                 // Install Node.js dependencies
                 bat 'npm ci'
-                // If package-lock.json is unavailable, replace with:
-                // bat 'npm install'
+            // If package-lock.json is unavailable, replace with:
+            // bat 'npm install'
             }
         }
 
@@ -58,9 +56,7 @@ pipeline {
     }
 
     post {
-
         always {
-
             // Publish Allure Report in Jenkins
             allure(
                 commandline: 'Allure',

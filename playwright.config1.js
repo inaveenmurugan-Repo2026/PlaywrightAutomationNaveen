@@ -7,7 +7,7 @@ import { on, worker } from 'node:cluster';
 const config = ({
   testDir: './tests',
   retries: 1,
-  workers:10, //By default playwright will run 5 execution as each workers take each test. here we are controlling to run with only 3 worker.
+  workers: 10, //By default playwright will run 5 execution as each workers take each test. here we are controlling to run with only 3 worker.
   timeout: 150 * 1000, // it will applicable to the entire project, every step - global
 
   expect: {
@@ -21,6 +21,17 @@ const config = ({
       name: 'safari',
       use: {
         browserName: 'webkit',
+        headless: false,
+        screenshot: 'on',
+        trace: 'off',
+        // ...devices['iPhone 11'] //mobile testing it will adjust to that specific mobs resolution.
+      }
+
+    },
+    {
+      name: 'firefox',
+      use: {
+        browserName: 'firefox',
         headless: false,
         screenshot: 'on',
         trace: 'off',

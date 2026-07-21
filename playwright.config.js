@@ -13,10 +13,11 @@ const config = ({
     timeout: 6000 // this is for assertion validations expect timeout
   },
 
-  reporter: [
-    ['html'],
-    ['allure-playwright']
-  ],
+reporter: [
+  ['html'],
+  ['json', { outputFile: 'playwright-report/results.json' }],
+  ['allure-playwright']
+],
 
   use: {  // browser initalization should be in use object
     browserName: 'chromium',

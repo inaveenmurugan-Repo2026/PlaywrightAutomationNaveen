@@ -1,0 +1,295 @@
+pipeline {
+
+    agent any
+
+
+    parameters {
+
+        choice(
+            name: 'TEST_SUITE',
+            choices: [
+                'Smoke',
+                'Regression',
+                'API'
+            ],
+            description: 'Select Playwright Test Suite'
+        )
+
+    }
+
+
+    tools {
+
+        nodejs 'Node24'
+
+    }
+
+
+
+    stages {
+
+
+        stage('Checkout Automation Code') {
+
+            steps {
+
+                git branch: 'main',
+                url: 'https://github.com/inaveenmurugan-Repo2026/PlaywrightAutomationNaveen.git'
+
+            }
+
+        }
+
+
+
+        stage('Install Dependencies') {
+
+            steps {
+
+                bat 'node -v'
+
+                bat 'npm -v'
+
+                bat 'npm ci'
+
+            }
+
+        }
+
+
+
+
+        stage('Install Playwright Browsers') {
+
+            steps {
+
+                bat 'npx playwright install chromium firefox webkit'
+
+            }
+
+        }
+
+
+
+
+
+        stage('Run Playwright Tests') {
+
+            steps {
+
+                script {
+
+
+                    if (params.TEST_SUITE == 'Smoke') {
+
+
+                        bat 'npm run webTests'
+
+
+                    }
+
+
+                    else if (params.TEST_SUITE == 'Regression') {
+
+
+                        bat 'npm run regression'
+
+
+                    }
+
+
+                    else if (params.TEST_SUITE == 'API') {
+
+
+                        bat 'npm run APITests'
+
+
+                    }
+
+
+                }
+
+            }
+
+        }
+
+
+    }
+
+
+
+
+    post {
+
+
+
+        always {
+
+
+
+            echo 'Generating Playwright Reports'
+
+
+
+            publishHTML([
+
+                allowMissing: true,
+
+                alwaysLinkToLastBuild: true,
+
+                keepAll: true,
+
+                reportDir: 'playwright-report',
+
+                reportFiles: 'index.html',
+
+                reportName: 'Playwright HTML Report'
+
+            ])
+
+
+
+
+
+            allure([
+
+                includeProperties: false,
+
+                jdk: '',
+
+                results: [[path: 'allure-results']]
+
+            ])
+
+
+
+        }
+
+
+
+
+
+
+        success {
+
+
+
+            echo 'PLAYWRIGHT TESTS PASSED ✅'
+
+
+
+            emailext(
+
+
+                subject: "SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+
+
+                body: """
+
+                <h2>Playwright Automation Execution Successful ✅</h2>
+
+
+                <p>
+
+                Job: ${env.JOB_NAME}<br>
+
+                Build Number: ${env.BUILD_NUMBER}<br>
+
+                Test Suite: ${params.TEST_SUITE}<br>
+
+                Status: SUCCESS
+
+                </p>
+
+
+                <p>
+
+                HTML Report:
+
+                ${env.BUILD_URL}Playwright_20HTML_20Report/
+
+                </p>
+
+
+                <p>
+
+                Allure Report:
+
+                ${env.BUILD_URL}allure/
+
+                </p>
+
+
+                """,
+
+
+                to: "inaveenmurugan@gmail.com"
+
+
+            )
+
+
+        }
+
+
+
+
+
+        failure {
+
+
+
+            echo 'PLAYWRIGHT TESTS FAILED ❌'
+
+
+
+            emailext(
+
+
+                subject: "FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+
+
+                body: """
+
+                <h2>Playwright Automation Failed ❌</h2>
+
+
+                <p>
+
+                Job: ${env.JOB_NAME}<br>
+
+                Build Number: ${env.BUILD_NUMBER}<br>
+
+                Test Suite: ${params.TEST_SUITE}<br>
+
+                Status: FAILED
+
+                </p>
+
+
+                <p>
+
+                Check Jenkins:
+
+                ${env.BUILD_URL}
+
+                </p>
+
+
+                """,
+
+
+                to: "inaveenmurugan@gmail.com"
+
+
+            )
+
+
+        }
+
+
+
+    }
+
+
+}
